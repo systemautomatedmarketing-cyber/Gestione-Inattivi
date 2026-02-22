@@ -1,7 +1,5 @@
 // app/settings/page.tsx
 "use client";
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
 
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
