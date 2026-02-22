@@ -1,7 +1,0 @@
-name = "sheets-proxy"
-main = "src/index.ts"
-compatibility_date = "2026-02-01"
-
-[vars]
-SPREADSHEET_ID = "1dd9rJWbcDpu26FXC1C0dtlq8rrM8Ff0c7Yw-Lgwkh90"
-SHEET_NAME = "2026_Gennaio"
