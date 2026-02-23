@@ -54,7 +54,9 @@ export default function HomePage() {
   }
 
   async function handleLogout() {
+if (auth) {
     await signOut(auth);
+}
     router.replace("/login");
   }
 
