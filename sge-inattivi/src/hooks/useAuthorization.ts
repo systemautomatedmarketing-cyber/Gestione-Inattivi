@@ -22,6 +22,11 @@ export function useAuthorization(user: User | null): AuthzState {
   useEffect(() => {
     let cancelled = false;
 
+    if (!db) {
+      if (!cancelled) setState({ loading: false, authorized: false, role: null });
+      return;
+    }
+
     async function run() {
       // ✅ ogni volta che cambia user, riparti in loading
       setState({ loading: true, authorized: false, role: null });
