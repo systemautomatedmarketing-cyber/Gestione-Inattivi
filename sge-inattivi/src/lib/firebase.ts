@@ -11,21 +11,24 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
 };
 
-function getFirebaseApp(): FirebaseApp | null {
-  // ✅ durante build/prerender (server) NON inizializzare Firebase
-  if (typeof window === "undefined") return null;
 
-  return getApps().length ? getApp() : initializeApp(firebaseConfig);
-}
+const app: FirebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
-//const app = getFirebaseApp();
-
-//export const auth: Auth | null = app ? getAuth(app) : null;
-//export const db: Firestore | null = app ? getFirestore(app) : null;
-
-const app = getApps().length ? getApps() : initializeApp(firebaseConfig);
-
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-
+export const auth: Auth = getAuth(app);
+export const db: Firestore = getFirestore(app);
 export const googleProvider = new GoogleAuthProvider();
+
+//function getFirebaseApp(): FirebaseApp | null {
+  // ✅ durante build/prerender (server) NON inizializzare Firebase
+//  if (typeof window === "undefined") return null;
+
+//  return getApps().length ? getApp() : initializeApp(firebaseConfig);
+//}
+
+
+//const app = getApps().length ? getApps() : initializeApp(firebaseConfig);
+
+//export const auth = getAuth(app);
+//export const db = getFirestore(app);
+
+//export const googleProvider = new GoogleAuthProvider();
