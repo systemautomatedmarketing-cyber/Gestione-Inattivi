@@ -18,15 +18,14 @@ function getFirebaseApp(): FirebaseApp | null {
   return getApps().length ? getApp() : initializeApp(firebaseConfig);
 }
 
-const app = getFirebaseApp();
+//const app = getFirebaseApp();
 
-export const auth: Auth | null = app ? getAuth(app) : null;
-export const db: Firestore | null = app ? getFirestore(app) : null;
+//export const auth: Auth | null = app ? getAuth(app) : null;
+//export const db: Firestore | null = app ? getFirestore(app) : null;
+
+const app = getApps().length ? getApps() : initializeApp(firebaseConfig);
+
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+
 export const googleProvider = new GoogleAuthProvider();
-
-//const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-
-//export const auth = getAuth(app);
-//export const googleProvider = new GoogleAuthProvider();
-//export const db = getFirestore(app);
-
