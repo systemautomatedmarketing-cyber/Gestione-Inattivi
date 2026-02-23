@@ -4,6 +4,14 @@ import dynamic from "next/dynamic";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
+const InattiviClient = dynamic(() => import("./InattiviClient"), {
+  ssr: false,
+});
+
+export default function Page() {
+  return <InattiviClient />;
+}
+
 import { useEffect, useMemo, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 
@@ -22,13 +30,6 @@ type InactiveRow = {
   attivazioneNetworker?: string | null;
 };
 
-const InattiviClient = dynamic(() => import("./InattiviClient"), {
-  ssr: false,
-});
-
-export default function Page() {
-  return <InattiviClient />;
-}
 
 export default function AdminInattiviPage() {
   const router = useRouter();
