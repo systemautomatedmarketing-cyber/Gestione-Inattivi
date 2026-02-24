@@ -24,9 +24,7 @@ export default function LoginPage() {
   async function handleLogin() {
     setError(null);
     try {    
-if (auth) {
       await signInWithPopup(auth, googleProvider);
-}
     } catch (e: any) {
       setError(e?.message ?? "Login fallito");
     }

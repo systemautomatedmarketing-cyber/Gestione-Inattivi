@@ -9,9 +9,7 @@ export default function UnauthorizedPage() {
   const router = useRouter();
 
   async function handleLogout() {
-if (auth) {
     await signOut(auth);
-}
     router.replace("/login");
   }
 
