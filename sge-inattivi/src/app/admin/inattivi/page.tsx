@@ -106,8 +106,13 @@ useEffect(() => {
       setAssignments(map);
 
       // carica da route server (niente CORS)
-      const resp = await fetch(`/api/inattivi?sheet=${encodeURIComponent(activeSheetName)}`, {
-        cache: "no-store",
+      //const resp = await fetch(`/api/inattivi?sheet=${encodeURIComponent(activeSheetName)}`, {
+      //  cache: "no-store",
+      //});
+
+      const WORKER_BASE = "https://sheets-proxy.systemautomatedmarketing.workers.dev";
+      const resp = await fetch(`${WORKER_BASE}/api/inattivi?sheet=${encodeURIComponent(activeSheetName)}`, {
+        headers: { "x-api-key": process.env.NEXT_PUBLIC_SHEETS_API_KEY! }
       });
 
 if (!resp.ok) {
@@ -356,7 +361,7 @@ async function saveAll() {
 
           <div className="flex items-center gap-2 flex-wrap">
             <select
-              className="rounded-lg border px-3 py-2 min-w-[320px]"
+              className="rounded-lg border px-3 py-2 min-w-[200px]"
               value={selectedByRow[r.rowIndex] ?? ""}
               onChange={(e) =>
                 setSelectedByRow((prev) => ({ ...prev, [r.rowIndex]: e.target.value }))
